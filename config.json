@@ -1,0 +1,5 @@
+{
+    "appClientId": "1a2fd0ea369b4c52a671707fa661200d",
+    "callbackUrl": "http://localhost:8080/dashboard.html",
+    "scope": "user-top-read"
+}

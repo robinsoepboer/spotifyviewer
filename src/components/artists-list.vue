@@ -20,7 +20,6 @@ export default Vue.extend({
     name: 'artists-list',
     data() {
         return {
-            token: 'BQDe3LUmFjRcK4RGvQRY4DNl12ajDlGuCKkdbKoRBsfrpTGUdHb9EXc0Kfjw-MC3LS87dJineWeih0HtL9QouMDXep48W1REy73yl0upXxKDO7NuahxWZu2RbwY_zDR7X8PsPmoJaoo6VrLP7P-Av3s',
             artists: {
                 items: {}
             }
@@ -29,12 +28,33 @@ export default Vue.extend({
     methods: {
         getTopArtists(event: any): void {
             let spotifyApi = new SpotifyWebApi();
-            spotifyApi.setAccessToken(this.token);
+            spotifyApi.setAccessToken(this.getToken());
 
             spotifyApi.getMyTopArtists()
                 .then(data => {
                     this.artists = data;
                 });
+        },
+
+        getToken(): string {           
+            let query = window.location.hash.substring(1);
+            let vars = query.split("&");
+            let token = '';
+
+            for (let i = 0 ; i < vars.length; i++) {
+                    let pair = vars[i].split("=");
+                    if(pair[0] == 'access_token')
+                        token = pair[1];
+                    if(pair[0] == 'expires_in')
+                        localStorage.setItem('expires_in', pair[1]);
+            }
+
+            if(!token)
+            {
+                window.location.href = '/error.html';                
+            }
+
+            return token;
         }
     },
     components:{
