@@ -26,7 +26,7 @@ export default Vue.extend({
         }
     },
     methods: {
-        getTopArtists(event: any): void {
+        getTopArtists(): void {
             let spotifyApi = new SpotifyWebApi();
             spotifyApi.setAccessToken(this.getToken());
 
