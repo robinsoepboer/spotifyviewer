@@ -23,6 +23,9 @@ export default Vue.extend({
         apiService.getTopArtists()
             .then(response => {
                 data.artists = response;
+            })
+            .catch(response => {
+                window.location.href = '/index.html';
             });
 
         return data;
