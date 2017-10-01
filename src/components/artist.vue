@@ -1,14 +1,14 @@
 <template>
     <div class="artist">
-        <img :src="artist.images[2].url">
-        <div class="info">
-            <span>
-                {{ artist.name }}
-            </span>
-            <a :src="artist.external_urls.spotify">
-                <img href="src/assets/spotify.svg" class="spotify-icon">            
-            </a>           
+        <div class="image-wrapper">
+            <img :src="artist.images[2].url">
         </div>
+        <div class="info">
+            {{ artist.name }}    
+        </div>
+        <a :href="artist.external_urls.spotify">
+            <img src="src/assets/spotify.svg" class="spotify-icon">            
+        </a>
     </div>
 </template>
 
@@ -30,27 +30,41 @@ export default Vue.extend({
 <style>
     .artist {
         display: flex;
-        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+        flex: 1 1 100px;
+        padding: 5px;
         margin: 5px;
     }
     
-    .artist img {
-        height: 50px;
-        width: 50px;
+    .artist .image-wrapper {
+        height: 100px;
+        width: 100px;
         border-radius: 10px;
+        margin-bottom: 10px;
+        overflow: hidden;
     }
 
-    .artist img.spotify-icon {
+    .artist .image-wrapper img {
+        height: 100px;
+        width: auto;
+        min-width:100px;
+    }
+
+    .artist .spotify-icon {
         height: 25px;
         width: 25px;
         border-radius: 10px;
     }
 
     .artist .info {
-        margin-left: 10px;
-        display: flex;
-        align-items: stretch;
+        margin-bottom: 10px;
         font-size: 20px;
+        text-align: center;
+        width:130px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .artist .info span, .artist .info a {

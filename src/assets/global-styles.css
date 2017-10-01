@@ -1,0 +1,16 @@
+html {
+    box-sizing: border-box;
+    font-family: Helvetica,Arial,sans-serif;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html, body, #app {
+    margin: 0;
+}
+
+h1 {
+    margin: 25px;
+}
