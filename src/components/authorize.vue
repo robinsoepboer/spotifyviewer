@@ -1,6 +1,9 @@
 <template>
     <div>
-        <a :href="spotifyBaseUrl + queryStringParameters">Authorize SpotifyViewer</a>
+        <p>
+            Please log in to Spotify, and authorize the SpotifyViewer app to view the dashboard.
+        </p>
+        <a :href="spotifyBaseUrl + queryStringParameters">Log in</a>
     </div>
 </template>
 
@@ -25,5 +28,22 @@ export default Vue.extend({
 </script>
 
 <style>
+    div {
+        margin-left: 25px;
+    }
 
+    a {
+        font-size: 14px;
+        line-height: 1.5;
+        border-radius: 500px;
+        padding: 7px 35px;
+        color: #fff;
+        background-color: #2ebd59;
+        text-decoration: none;
+        transition: background-color .15s ease,border-color .15s ease,color .15s ease;   
+    }
+
+    a:hover {
+        background-color: #1ed760;
+    }
 </style>

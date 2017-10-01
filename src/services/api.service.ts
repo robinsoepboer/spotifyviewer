@@ -6,7 +6,7 @@ export class ApiService {
         let spotifyApi = new SpotifyWebApi();
         spotifyApi.setAccessToken(this.getToken());
 
-        return spotifyApi.getMyTopArtists()
+        return spotifyApi.getMyTopArtists();
     }
 
     /* Private functions  */
