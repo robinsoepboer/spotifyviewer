@@ -9,6 +9,17 @@ export class ApiService {
         return spotifyApi.getMyTopArtists();
     }
 
+    public getTopTracks(): Promise<SpotifyApi.UsersTopTracksResponse> {
+        let spotifyApi = new SpotifyWebApi();
+        spotifyApi.setAccessToken(this.getToken());
+
+        return spotifyApi.getMyTopTracks();
+    }
+
+    public redirectToAuthorize(response: any): void{
+        window.location.href = '/index.html';        
+    } 
+
     /* Private functions  */
 
     private getToken(): string {           

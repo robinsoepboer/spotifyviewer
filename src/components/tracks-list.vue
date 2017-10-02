@@ -1,28 +1,31 @@
 <template>
-    <div id="artists-list" >
-        <artist-component v-for="artist in artists.items" v-bind:key="artist" :artist="artist"></artist-component>
+    <div>
+        <h2>Your top tracks:</h2>
+        <div id="tracks-list">
+            <track-component v-for="track in tracks.items" v-bind:key="track" :track="track"></track-component>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import ArtistComponent from './artist.vue';
+import TrackComponent from './track.vue';
 import { ApiService } from '../services/api.service';
 import * as SpotifyWebApi from 'spotify-web-api-js';
 
 export default Vue.extend({
-    name: 'artists-list',
+    name: 'tracks-list',
     data() {
         let data = {
-            artists: {
+            tracks: {
                 items: {}
             }
         }
 
         let apiService = new ApiService();
-        apiService.getTopArtists()
+        apiService.getTopTracks()
             .then(response => {
-                data.artists = response;
+                data.tracks = response;
             })
             .catch(apiService.redirectToAuthorize);
 
@@ -31,15 +34,20 @@ export default Vue.extend({
     methods: {
     },
     components: {
-        ArtistComponent
+        TrackComponent
     }
 });
 </script>
 
 <style>
-#artists-list {
+#tracks-list {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
+    margin:0 20px;
+}
+
+h2 {
+    margin-left: 25px;
 }
 </style>
