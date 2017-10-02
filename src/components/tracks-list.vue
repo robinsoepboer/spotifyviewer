@@ -31,8 +31,6 @@ export default Vue.extend({
 
         return data;
     },
-    methods: {
-    },
     components: {
         TrackComponent
     }
