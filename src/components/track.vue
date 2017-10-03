@@ -11,6 +11,9 @@
                 </span>
             </div>
         </div>
+        <a :href="track.external_urls.spotify">
+            <img src="src/assets/spotify.svg" class="spotify-icon">            
+        </a>
     </div>
 </template>
 
@@ -68,4 +71,18 @@ track .info .artists {
 .track .info .artists {
     font-size: 12px;
 }
+
+.track a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.track .spotify-icon {
+    height: 25px;
+    width: 25px;
+    border-radius: 10px;
+}
+
 </style>
