@@ -13,22 +13,19 @@ import * as SpotifyWebApi from 'spotify-web-api-js';
 export default Vue.extend({
     name: 'artists-list',
     data() {
-        let data = {
+        return {
             artists: {
                 items: {}
             }
-        }
-
+        };
+    },
+    created: function(){
         let apiService = new ApiService();
         apiService.getTopArtists()
             .then(response => {
-                data.artists = response;
+                this.artists = response;
             })
             .catch(apiService.redirectToAuthorize);
-
-        return data;
-    },
-    methods: {
     },
     components: {
         ArtistComponent

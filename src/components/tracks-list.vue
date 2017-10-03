@@ -16,23 +16,22 @@ import * as SpotifyWebApi from 'spotify-web-api-js';
 export default Vue.extend({
     name: 'tracks-list',
     data() {
-        let data = {
+        return {
             tracks: {
                 items: {}
             }
-        }
-
-        let apiService = new ApiService();
-        apiService.getTopTracks()
-            .then(response => {
-                data.tracks = response;
-            })
-            .catch(apiService.redirectToAuthorize);
-
-        return data;
+        };
     },
     components: {
         TrackComponent
+    },
+    created: function(){
+        let apiService = new ApiService();
+        apiService.getTopTracks()
+            .then(response => {
+                this.tracks = response;
+            })
+            .catch(apiService.redirectToAuthorize);
     }
 });
 </script>
